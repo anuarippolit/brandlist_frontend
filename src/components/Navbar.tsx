@@ -17,7 +17,7 @@ const Navbar = () => {
           <img
             src="/images/heart.png"
             alt="Favorites"
-            className="w-10 h-10 cursor-pointer"
+            className="w-8 h-8 cursor-pointer"
           />
       </Link>
       </div>
