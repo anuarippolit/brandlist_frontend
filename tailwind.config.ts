@@ -8,9 +8,21 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        customPurple: "#6F00FF",
+      },
+      animation: {
+        gallery: "gallery 60s linear infinite",
+      },
+      keyframes: {
+        gallery: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
     },
   },
