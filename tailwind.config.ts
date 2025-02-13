@@ -14,6 +14,9 @@ export default {
       },
       colors: {
         customPurple: "#6F00FF",
+        inputColor: "#333333", 
+        darkgrayColor: "#171717",
+        borderColor: 'rgba(255, 255, 255, 0.5)', 
       },
       animation: {
         gallery: "gallery 60s linear infinite",
