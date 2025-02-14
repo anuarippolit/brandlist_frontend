@@ -18,7 +18,7 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
   const applyFilters = () => {
     const filters: Record<string, string> = {};
   
-    if (selectedSize) filters.size = formatSize(selectedSize);  // ✅ Convert to JSON format
+    if (selectedSize) filters.size = formatSize(selectedSize);
     if (selectedBrand) filters.brand = selectedBrand;
     if (selectedCategory) filters.category = selectedCategory;
     if (selectedColor) filters.color = selectedColor;
@@ -28,7 +28,7 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
     console.log("Applying Filters:", filters);
     onApplyFilters(filters);
 
-    setIsModalOpen(false);  // ✅ Close modal after applying filters
+    setIsModalOpen(false);
   };
 
   return (
@@ -41,10 +41,14 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
       </button>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+          onClick={toggleModal} // Close modal when clicking outside
+        >
           <div
             className="relative bg-darkgrayColor text-borderColor rounded-lg p-6 w-[1040px] h-[923px] flex flex-col"
             style={{ border: "1px solid #6B7280" }}
+            onClick={(e) => e.stopPropagation()} // Prevent click inside modal from closing it
           >
             <button
               onClick={toggleModal}
@@ -94,7 +98,7 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                 </div>
               </div>
 
-              {/* Size Filter (Now Matches API Format) */}
+              {/* Size Filter */}
               <div>
                 <div className="text-borderColor mb-2">Размер</div>
                 <div className="flex flex-wrap gap-2">
@@ -153,7 +157,6 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
               </div>
             </div>
 
-            {/* Apply Filters Button (Now Closes Modal) */}
             <button
               onClick={applyFilters}
               className="mt-6 px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-800"

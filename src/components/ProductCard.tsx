@@ -64,12 +64,13 @@ const ProductCard = ({ product, onClick }: {
 
       <div>
         <p className="text-[16px] font-normal text-white">
-          {product.sale_price.toLocaleString()} ₸{" "}
-          {product.first_price && (
-            <span className="text-gray-400 text-[16px] line-through">
-              {product.first_price.toLocaleString()} ₸
-            </span>
-          )}
+        {product.sale_price ? product.sale_price.toLocaleString() : "Цена не указана"} ₸{" "}
+        {product.first_price ? (
+  <span className="text-gray-400 text-[16px] line-through">
+    {product.first_price.toLocaleString()} ₸
+  </span>
+) : null}
+
         </p>
         <p className="text-[16px] font-medium mt-2">{product.name}</p>
         <p className="font-normal text-[14px] mt-2">{product.brand} ({product.shop})</p>

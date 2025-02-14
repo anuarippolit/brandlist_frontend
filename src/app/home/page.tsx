@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
+import { useEffect } from "react";
 
 const SearchSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,12 +20,11 @@ const SearchSection = () => {
 
   return (
     <div
-      className="absolute z-10 bg-darkgrayColor bg-opacity-95 text-white text-center rounded-[30px] w-[760px] h-[894px] mx-auto left-1/2 transform -translate-x-1/2"
-      style={{ top: "30px" }} // Position the search section 90px from the top
+      className="absolute z-10 bg-darkgrayColor bg-opacity-95 text-white text-center rounded-[30px] w-[760px] h-[730px] mx-auto left-1/2 transform -translate-x-1/2 overflow-hidden"
+      style={{ top: "20px" }} 
     >
-      <div className="p-12 mt-[200px]">
-        {/* Title Section */}
-        <h1 className="text-[32px] font-poppins font-extrabold leading-[40px] tracking-tight">
+      <div className="p-12 mt-[140px]">
+        <h1 className="text-[40px] font-poppins font-normal leading-[52px] tracking-tight">
           <span className="font-extrabold italic">brand</span>
           <span className="text-[#6F00FF] font-extrabold italic">list</span>{" "}
           <span className="font-inter">— это</span>{" "}
@@ -35,26 +35,25 @@ const SearchSection = () => {
           <span className="font-inter">магазинах Казахстана</span>{" "}
         </h1>
 
-        {/* Search Input */}
-        <div className="mt-6 flex justify-center items-center relative w-full max-w-[700px] mx-auto">
+        <div className="mt-[50px] flex justify-center items-center relative w-full max-w-[550px] mx-auto">
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="женские кроссовки"
-            className="w-full px-8 py-5 text-lg rounded-full bg-inputColor text-white focus:outline-none placeholder-borderColor"
+            placeholder="Напишите свой запрос"
+            className="w-full px-[25px] py-[10px] text-lg rounded-full bg-inputColor text-white focus:outline-none placeholder-borderColor"
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           />
           <button
-            className="absolute right-4 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center"
+            className="absolute right-4 w-[30px] h-[30px] bg-purple-600 text-white rounded-full flex items-center justify-center"
             onClick={handleSearch}
           >
-            <img src="/images/arrow.png" alt="Search" className="w-7 h-7" />
+            <img src="/images/arrow.png" alt="Search" className="w-[15px] h-[15px]" />
           </button>
         </div>
 
         {/* Popular Queries */}
-        <div className="mt-8 text-gray-300">
+        <div className="mt-8 text-gray-300 max-w-[550px] mx-auto">
           <p className="text-[16px] text-borderColor">Самые популярные запросы:</p>
           <div className="mt-4 flex flex-wrap justify-center gap-4">
             {[
@@ -67,7 +66,7 @@ const SearchSection = () => {
               <span
                 key={index}
                 onClick={() => handleQueryClick(query)}
-                className="border-2 border-borderColor px-4 py-2 rounded-full text-borderColor text-[16px] cursor-pointer hover:bg-purple-600"
+                className="border-2 border-borderColor px-[28px] py-[5px] rounded-full text-borderColor text-[16px] cursor-pointer hover:bg-purple-600"
               >
                 {query}
               </span>
@@ -80,14 +79,20 @@ const SearchSection = () => {
 };
 
 const Home = () => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
   return (
     <>
       <Navbar />
       <div className="relative w-full h-screen overflow-hidden bg-black">
-        {/* Background Image Slider */}
         <div
-          className="absolute left-0 flex items-center space-x-10 animate-gallery w-[calc(450px*6*2)]"
-          style={{ top: "200px" }} 
+          className="absolute left-0 flex items-center space-x-[20px] animate-gallery w-[calc(450px*6*2)]"
+          style={{ top: "100px" }} 
         >
           {[...Array(3)].map((_, repeatIndex) =>
             [1, 2, 3, 4, 5, 6].map((num) => (
@@ -102,8 +107,6 @@ const Home = () => {
             ))
           )}
         </div>
-
-        {/* Search Section */}
         <SearchSection />
       </div>
     </>
