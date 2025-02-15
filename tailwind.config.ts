@@ -8,6 +8,13 @@ export default {
   ],
   theme: {
     extend: {
+      borderWidth:{
+        3: '3px',
+        1: '1px',
+      },
+      padding: {
+        "0.25": "1px", 
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         inter: ["Inter", "sans-serif"],

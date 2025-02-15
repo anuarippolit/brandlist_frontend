@@ -32,23 +32,37 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
   };
 
   return (
-    <div className="flex flex-wrap gap-4 mb-8 relative ml-96">
+    <div className="flex flex-wrap gap-2 mb-8 mt-[30px] relative ml-[270px]">
       <button
         onClick={toggleModal}
-        className="border-2 border-borderColor bg-black text-borderColor px-8 py-1 rounded-full hover:bg-purple-600 hover:text-white"
+        className="border-1 border-borderColor bg-black text-borderColor px-7 py-0.25 rounded-full hover:bg-purple-600 hover:text-white"
       >
         Фильтр
       </button>
-
+      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
+        Категория
+      </div>
+      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
+        Бренд
+      </div>
+      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
+        Размер
+      </div>
+      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
+        Цена
+      </div>
+      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
+        Пол
+      </div>
       {isModalOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
-          onClick={toggleModal} // Close modal when clicking outside
+          onClick={toggleModal} 
         >
           <div
-            className="relative bg-darkgrayColor text-borderColor rounded-lg p-6 w-[1040px] h-[923px] flex flex-col"
+            className="relative bg-darkgrayColor text-borderColor rounded-lg p-6 w-[1040px] h-[750px] flex flex-col"
             style={{ border: "1px solid #6B7280" }}
-            onClick={(e) => e.stopPropagation()} // Prevent click inside modal from closing it
+            onClick={(e) => e.stopPropagation()} 
           >
             <button
               onClick={toggleModal}
@@ -62,15 +76,29 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
             </div>
 
             <div className="grid gap-6 overflow-y-auto">
-              {/* Category Filter */}
               <div>
                 <div className="text-borderColor mb-2">Категория</div>
                 <div className="flex flex-wrap gap-2">
-                  {["Кроссовки", "Обувь", "Ботинки", "Футболки"].map((category) => (
+                  {[
+  "Кроссовки", 
+  "Верхняя Одежда", 
+  "Брюки", 
+  "Рубашки", 
+  "Майки", 
+  "Пиджаки и костюмы", 
+  "Джинсы", 
+  "Худи и свитшоты", 
+  "Футболки", 
+  "Спортивные костюмы", 
+  "Нижнее белье", 
+  "Носки", 
+  "Свитеры и кардиганы"
+]
+                  .map((category) => (
                     <button
                       key={category}
-                      onClick={() => setSelectedCategory(category)}
-                      className={`px-4 py-2 rounded-full ${
+                      onClick={() => setSelectedCategory(prev => prev === category ? null : category)}
+                      className={`px-4 py-0.5 rounded-full ${
                         selectedCategory === category ? "bg-purple-600 text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
                       } hover:bg-purple-600 hover:text-white`}
                     >
@@ -80,15 +108,14 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                 </div>
               </div>
 
-              {/* Brand Filter */}
               <div>
                 <div className="text-borderColor mb-2">Бренд</div>
                 <div className="flex flex-wrap gap-2">
-                  {["AdidasOriginals", "Nike", "Puma", "Karl Lagerfeld", "Reebok"].map((brand) => (
+                  {["AdidasOriginals", "Nike", "Puma", "Karl Lagerfeld", "Reebok","New Balance", "Asics", "Converse", "Onitsuka Tiger", "Lacoste", "Vans", "Calvin Klein"].map((brand) => (
                     <button
                       key={brand}
-                      onClick={() => setSelectedBrand(brand)}
-                      className={`px-4 py-2 rounded-full ${
+                      onClick={() => setSelectedBrand(prev => prev === brand ? null : brand)}
+                      className={`px-4 py-0.5 rounded-full ${
                         selectedBrand === brand ? "bg-purple-600 text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
                       } hover:bg-purple-600 hover:text-white`}
                     >
@@ -97,16 +124,14 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                   ))}
                 </div>
               </div>
-
-              {/* Size Filter */}
               <div>
                 <div className="text-borderColor mb-2">Размер</div>
                 <div className="flex flex-wrap gap-2">
-                  {["36", "37", "38", "39", "40"].map((size) => (
+                  {["36", "37", "38", "39", "40", "41", "42", "43", "3", "3.5", "4", "7", "8", "9"].map((size) => (
                     <button
                       key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-4 py-2 rounded-full ${
+                      onClick={() => setSelectedSize(prev => prev === size ? null : size)}
+                      className={`px-4 py-0.5 rounded-full ${
                         selectedSize === size ? "bg-purple-600 text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
                       } hover:bg-purple-600 hover:text-white`}
                     >
@@ -116,7 +141,6 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                 </div>
               </div>
 
-              {/* Price Filter */}
               <div>
                 <div className="text-borderColor mb-2">Цена</div>
                 <div className="flex items-center gap-2">
@@ -125,7 +149,7 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                     value={minPrice || ""}
                     onChange={(e) => setMinPrice(Number(e.target.value))}
                     placeholder="Мин."
-                    className="w-24 p-2 bg-darkgrayColor border-2 border-borderColor rounded-full text-borderColor"
+                    className="w-24 p-0.5 bg-darkgrayColor border-2 border-borderColor rounded-full text-borderColor text-sm px-2"
                   />
                   <span className="text-borderColor">—</span>
                   <input
@@ -133,19 +157,18 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                     value={maxPrice || ""}
                     onChange={(e) => setMaxPrice(Number(e.target.value))}
                     placeholder="Макс."
-                    className="w-24 p-2 bg-darkgrayColor border-2 border-borderColor rounded-full text-borderColor"
+                    className="w-24 p-0.5 bg-darkgrayColor border-2 border-borderColor rounded-full text-borderColor text-sm px-2"
                   />
                 </div>
               </div>
 
-              {/* Color Filter */}
               <div>
                 <div className="text-borderColor mb-2">Цвет</div>
                 <div className="flex flex-wrap gap-2">
-                  {["Золотой", "Черный", "Белый", "Синий"].map((color) => (
+                  {["Золотой", "Черный", "Белый", "Синий", "Серый", "Зеленый", "Желтый", "Оранжевый", "Красный", "Розовый", "Фиолетовый", "Хаки"].map((color) => (
                     <button
                       key={color}
-                      onClick={() => setSelectedColor(color)}
+                      onClick={() => setSelectedColor(prev => prev === color ? null : color)}
                       className={`px-4 py-2 rounded-full ${
                         selectedColor === color ? "bg-purple-600 text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
                       } hover:bg-purple-600 hover:text-white`}

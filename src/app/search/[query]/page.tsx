@@ -51,7 +51,8 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
             category: string[];
           }) => ({
             id: product.id,
-            name: product.name,
+            //name: product.name,
+            name: product.name.length > 17 ? product.name.slice(0, 17) + "..." : product.name, 
             sale_price: product.sale_price,
             first_price: product.first_price,
             brand: product.brand,
@@ -59,7 +60,7 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
             image_url: product.image_url,
             link: product.link,
             category: product.category,
-            onClick: () => router.push(`/search/${searchQuery}/${product.id}`), // Fix URL
+            onClick: () => router.push(`/search/${searchQuery}/${product.id}`), 
           }))
         );
       } catch (error) {
@@ -120,7 +121,7 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
       <Navbar />
       <Breadcrumb breadcrumbs={[{ label: "Поиск", href: "/home" }, { label: query || "..." }]} />
       <main className="px-8">
-        <h1 className="text-4xl font-bold mb-6 ml-96">{query}</h1>
+        <h1 className="text-[35px] font-normal mb-6 ml-[340px] mt-[10px] ">{query}</h1>
         <FilterBar onApplyFilters={fetchFilteredProducts} />
         {products.length > 0 ? (
           <ProductGrid

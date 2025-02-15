@@ -44,7 +44,7 @@ const ProductCard = ({ product, onClick }: {
       className="bg-neutral-900 p-[10px] rounded-lg shadow-md hover:shadow-lg cursor-pointer font-inter font-normal"
       onClick={onClick}
     >
-      <div className="bg-gray-200 h-[300px] w-[225px] rounded-lg mb-4 relative">
+      <div className="bg-gray-200 h-[250px] w-[200px] rounded-lg mb-4 relative">
         <img
           src={product.image_url}
           alt={product.name}
@@ -57,7 +57,7 @@ const ProductCard = ({ product, onClick }: {
           <img
             src={isFavorited ? "/images/filledheart.png" : "/images/blackheart.png"}
             alt="Favorite"
-            className="w-5 h-5"
+            className="w-[20px] h-[18px]"
           />
         </button>
       </div>
