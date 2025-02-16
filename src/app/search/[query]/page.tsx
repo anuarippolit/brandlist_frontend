@@ -67,6 +67,7 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
         console.error("Error fetching products:", error);
       }
     };
+    console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
 
     fetchProducts();
   }, [params]); // Fix dependency

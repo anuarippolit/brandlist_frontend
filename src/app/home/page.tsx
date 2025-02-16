@@ -58,10 +58,10 @@ const SearchSection = () => {
           <div className="mt-4 flex flex-wrap justify-center gap-4">
             {[
               "Adidas Samba",
-              "Пальто на осень",
-              "Шорты Nike",
-              "Pandora",
-              "Женские сапоги",
+              "Спортивные брюки",
+              "Кроссовки",
+              "Calvin Klein Jeans",
+              "Худи",
             ].map((query, index) => (
               <span
                 key={index}
