@@ -32,7 +32,7 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
         const { query, productId } = resolvedParams;
         setQuery(query);
 
-        const response = await fetch(`http://localhost:8000/products/${productId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`);
         if (!response.ok) {
           throw new Error(`HTTP Error! Status: ${response.status}`);
         }
@@ -80,7 +80,7 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
   }
 
   return (
-    <div className="bg-black text-white min-h-screen p-8">
+    <div className="bg-black text-white min-h-screen">
       <Navbar />
       <Breadcrumb breadcrumbs={[{ label: "Поиск", href: "/home" }, { label: query || "...", href: `/search/${query}` }, { label: product.name }]} />
 
