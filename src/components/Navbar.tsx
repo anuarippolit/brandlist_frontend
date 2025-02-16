@@ -37,7 +37,7 @@ const Navbar = () => {
             <img
               src="/images/heart.png"
               alt="Favorites"
-              className="w-[20px] h-[20px] cursor-pointer"
+              className="w-[20px] h-[18px] cursor-pointer"
             />
             {favoriteCount > 0 && (
               <span className="absolute -top-2 -right-3 bg-customPurple text-white text-xs px-1.5 py-0.5 rounded-full">
