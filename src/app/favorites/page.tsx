@@ -32,7 +32,7 @@ const FavoritesPage = () => {
     <div className="bg-black min-h-screen">
       <Navbar />
       <Breadcrumb breadcrumbs={[{ label: "", href: "" },]} />
-      <h1 className="text-[35px] font-normal mb-6 ml-[365px] mt-[10px] ">Избранное</h1>
+      {/* <h1 className="text-[35px] font-normal mb-6 ml-4 sm:ml-[365px] mt-[10px] ">Избранное</h1>
       {favorites.length > 0 ? (
         <ProductGrid
         products={favorites.map((product) => ({
@@ -44,8 +44,25 @@ const FavoritesPage = () => {
       ) : (
       <div className="flex flex-grow items-center justify-center">
         <p className="text-gray-400 text-xl">Нет избранных товаров.</p>
-      </div>      
-    )}
+      </div>       */}
+      <main className="px-8">
+  <h1 className="text-[35px] font-normal mb-6 ml-4 sm:ml-[340px] mt-[10px]">Избранное</h1>
+  {favorites.length > 0 ? (
+    <ProductGrid
+      products={favorites.map((product) => ({
+        ...product,
+        name: product.name.length > 17 ? product.name.slice(0, 17) + "..." : product.name,
+        onClick: () => handleProductClick(product),
+      }))}
+    />
+  ) : (
+    <div className="flex flex-grow items-center justify-center mt-10">
+      <p className="text-gray-400 text-xl">Нет избранных товаров.</p>
+    </div>
+  )}
+</main>
+
+    
     </div>
   );
 };

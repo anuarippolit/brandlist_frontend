@@ -29,14 +29,14 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
         const searchQuery = decodeURIComponent(resolvedParams.query || "");
         setQuery(searchQuery);
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_LOCALHOST}/search?name=${encodeURIComponent(searchQuery)}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search?name=${encodeURIComponent(searchQuery)}`);
     
         if (!response.ok) {
           throw new Error(`HTTP Error! Status: ${response.status}`);
         }
     
         const data = await response.json();
-        console.log("Fetched Products:", data); // Debugging
+        console.log("Fetched Products:", data); 
     
         setProducts(
           (data.results || []).map((product: {
@@ -51,7 +51,6 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
             category: string[];
           }) => ({
             id: product.id,
-            //name: product.name,
             name: product.name.length > 17 ? product.name.slice(0, 17) + "..." : product.name, 
             sale_price: product.sale_price,
             first_price: product.first_price,
@@ -67,17 +66,17 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
         console.error("Error fetching products:", error);
       }
     };
-    console.log("API URL:", process.env.NEXT_PUBLIC_LOCALHOST);
+    console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
 
     fetchProducts();
-  }, [params]); // Fix dependency
+  }, [params]); 
 
   const fetchFilteredProducts = async (filters: Record<string, string>) => {
     try {
       const queryParams = new URLSearchParams(filters);
-      console.log("Sending Filter Request:", queryParams.toString()); // ✅ Log request before sending
+      console.log("Sending Filter Request:", queryParams.toString()); 
   
-      const response = await fetch(`${process.env.NEXT_PUBLIC_LOCALHOST}/products/filter?${queryParams.toString()}`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/filter?${queryParams.toString()}`);
   
       if (!response.ok) {
         const errorText = await response.text();
@@ -85,7 +84,7 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
       }
   
       const data = await response.json();
-      console.log("Filtered Products:", data); // ✅ Log response for debugging
+      console.log("Filtered Products:", data); 
   
       setProducts(
         (data.results || []).map((product: {
@@ -122,7 +121,7 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
       <Navbar />
       <Breadcrumb breadcrumbs={[{ label: "Поиск", href: "/home" }, { label: query || "..." }]} />
       <main className="px-8">
-        <h1 className="text-[35px] font-normal mb-6 ml-[340px] mt-[10px] ">{query}</h1>
+        <h1 className="text-[35px] font-normal mb-6 ml-4 sm:ml-[340px] mt-[10px] ">{query}</h1>
         <FilterBar onApplyFilters={fetchFilteredProducts} />
         {products.length > 0 ? (
           <ProductGrid

@@ -20,7 +20,7 @@ const Breadcrumb = ({
   };
 
   return (
-    <nav className="px-8 py-4 text-gray-400 font-inter text-[16px] font-normal ml-[340px]">
+    <nav className="px-8 py-4 text-gray-400 font-inter text-[16px] font-normal ml-4 sm:ml-[340px]">
   {isFavoritesPage ? (
     <>
       <span

@@ -32,7 +32,7 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
         const { query, productId } = resolvedParams;
         setQuery(query);
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_LOCALHOST}/products/${productId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`);
         if (!response.ok) {
           throw new Error(`HTTP Error! Status: ${response.status}`);
         }
@@ -84,8 +84,9 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
       <Navbar />
       <Breadcrumb breadcrumbs={[{ label: "Поиск", href: "/home" }, { label: query || "...", href: `/search/${query}` }, { label: product.name }]} />
 
-      <div className="flex flex-col lg:flex-row gap-6 mt-4">
-        <div className="h-[620px] w-[480px] bg-gray-300 rounded-lg ml-[200px] relative">
+      <div className="flex flex-col lg:flex-row gap-6 mt-4 px-4 lg:px-0">
+
+        <div className="w-full h-[470px] sm:h-[620px] sm:w-[480px] bg-gray-300 rounded-lg sm:ml-[200px] relative">
           <img
             src={product.image_url}
             alt={product.name}
@@ -105,12 +106,12 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
           </button>
         </div>
 
-        <div className="w-[550px] bg-[#171717] h-[350px] p-6 rounded-lg font-inter">
+        <div className="w-full sm:w-[550px] bg-[#171717] h-[350px] p-6 rounded-lg font-inter">
           <h2 className="text-[16px] font-normal">{product.brand}</h2>
           <h3 className="text-[16px] font-bold mt-[15px] mb-[15px]">{product.name}</h3>
 
-          <div className="bg-[#333333] p-4 rounded-lg mt-4 flex justify-between items-start">
-            <div className="flex flex-wrap gap-1.5 mt-[15px]">
+          <div className="bg-[#333333] p-4 rounded-lg mt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+          <div className="flex flex-wrap gap-1.5 mt-[15px]">
               {product?.sizes?.slice(0, 3).map((size, index) => (
                 <span
                   key={index}
@@ -121,7 +122,7 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
               ))}
             </div>
 
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col items-start sm:items-end">
               <a
                 href={product.link}
                 target="_blank"
@@ -131,12 +132,12 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
                 В магазин
               </a>
 
-              <div className="flex gap-3 mt-2">
-                {product.first_price && (
-                  <p className="text-[#919191] line-through text-[16px]">
-                    {product?.first_price?.toLocaleString()} ₸
-                  </p>
-                )}
+              <div className="flex gap-3 mt-2 sm:ml-0 ml-2">
+              {product.first_price && product.first_price !== product.sale_price && (
+  <p className="text-[#919191] line-through text-[16px]">
+    {product.first_price.toLocaleString()} ₸
+  </p>
+)}
                 <p className="text-white text-[16px]">
                   {product?.sale_price?.toLocaleString()} ₸
                 </p>

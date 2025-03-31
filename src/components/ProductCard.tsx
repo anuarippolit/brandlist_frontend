@@ -17,7 +17,6 @@ const ProductCard = ({ product, onClick }: {
   const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
-    // ✅ Check if product is already in favorites
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     setIsFavorited(favorites.some((fav: { id: number }) => fav.id === product.id));
   }, [product.id]);
@@ -28,10 +27,8 @@ const ProductCard = ({ product, onClick }: {
     let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
     if (isFavorited) {
-      // ✅ Remove from favorites
       favorites = favorites.filter((fav: { id: number }) => fav.id !== product.id);
     } else {
-      // ✅ Add to favorites
       favorites.push(product);
     }
 
@@ -41,10 +38,11 @@ const ProductCard = ({ product, onClick }: {
 
   return (
     <div 
-      className="bg-neutral-900 p-[10px] rounded-lg shadow-md hover:shadow-lg cursor-pointer font-inter font-normal"
-      onClick={onClick}
-    >
-      <div className="bg-gray-200 h-[250px] w-[200px] rounded-lg mb-4 relative">
+  className="bg-neutral-900 p-[5px] sm:p-[10px] rounded-lg shadow-md hover:shadow-lg cursor-pointer font-inter font-normal w-full max-w-[200px] mx-auto"
+  onClick={onClick}
+>
+
+      <div className="bg-gray-200 h-[200px] w-[150px] sm:h-[250px] sm:w-[200px] rounded-lg mb-4 relative">
         <img
           src={product.image_url}
           alt={product.name}
@@ -65,11 +63,11 @@ const ProductCard = ({ product, onClick }: {
       <div>
         <p className="text-[16px] font-normal text-white">
         {product.sale_price ? product.sale_price.toLocaleString() : "Цена не указана"} ₸{" "}
-        {product.first_price ? (
-  <span className="text-gray-400 text-[16px] line-through">
+        {product.first_price && product.first_price !== product.sale_price && (
+  <span className="text-[#919191] line-through text-[16px]">
     {product.first_price.toLocaleString()} ₸
   </span>
-) : null}
+)}
 
         </p>
         <p className="text-[16px] font-medium mt-2">{product.name}</p>
