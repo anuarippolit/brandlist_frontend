@@ -36,7 +36,7 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
     <div className="sm:text-[16px] text-[14px] flex overflow-x-auto gap-2 mb-8 mt-[30px] px-4 sm:px-0 sm:ml-[270px] no-scrollbar">
       <button
         onClick={toggleModal}
-        className="border-1 border-borderColor bg-black text-borderColor px-7 py-0.25 rounded-full hover:bg-purple-600 hover:text-white"
+        className="border-1 border-borderColor bg-black text-borderColor px-7 py-0.25 rounded-full hover:bg-customPurple hover:text-white"
       >
         Фильтр
       </button>
@@ -52,7 +52,7 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
 ].filter(Boolean).map((filter, index) => (
   <div
     key={index}
-    className="whitespace-nowrap border-1 border-borderColor bg-black text-borderColor px-7 py-0.5 rounded-full hover:bg-purple-600 hover:text-white"
+    className="whitespace-nowrap border-1 border-borderColor text-white px-7 py-0.5 rounded-full bg-customPurple"
   >
     {typeof filter === "object" && filter?.label}
   </div>
@@ -103,8 +103,8 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                       key={category}
                       onClick={() => setSelectedCategory(prev => prev === category ? null : category)}
                       className={`px-4 py-0.5 rounded-full ${
-                        selectedCategory === category ? "bg-purple-600 text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
-                      } hover:bg-purple-600 hover:text-white`}
+                        selectedCategory === category ? "bg-customPurple text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
+                      } hover:bg-customPurple hover:text-white`}
                     >
                       {category}
                     </button>
@@ -120,8 +120,8 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                       key={brand}
                       onClick={() => setSelectedBrand(prev => prev === brand ? null : brand)}
                       className={`px-4 py-0.5 rounded-full ${
-                        selectedBrand === brand ? "bg-purple-600 text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
-                      } hover:bg-purple-600 hover:text-white`}
+                        selectedBrand === brand ? "bg-customPurple text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
+                      } hover:bg-customPurple hover:text-white`}
                     >
                       {brand}
                     </button>
@@ -136,8 +136,8 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                       key={size}
                       onClick={() => setSelectedSize(prev => prev === size ? null : size)}
                       className={`px-4 py-0.5 rounded-full ${
-                        selectedSize === size ? "bg-purple-600 text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
-                      } hover:bg-purple-600 hover:text-white`}
+                        selectedSize === size ? "bg-customPurple text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
+                      } hover:bg-customPurple hover:text-white`}
                     >
                       {size}
                     </button>
@@ -174,8 +174,8 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
                       key={color}
                       onClick={() => setSelectedColor(prev => prev === color ? null : color)}
                       className={`px-4 py-2 rounded-full ${
-                        selectedColor === color ? "bg-purple-600 text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
-                      } hover:bg-purple-600 hover:text-white`}
+                        selectedColor === color ? "bg-customPurple text-white" : "bg-darkgrayColor border-2 border-borderColor text-borderColor"
+                      } hover:bg-customPurple hover:text-white`}
                     >
                       {color}
                     </button>
@@ -186,7 +186,7 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
 
             <button
               onClick={applyFilters}
-              className="mt-6 px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-800"
+              className="mt-6 px-6 py-3 bg-customPurple text-white rounded-full hover:bg-customPurple"
             >
               Показать результаты
             </button>
