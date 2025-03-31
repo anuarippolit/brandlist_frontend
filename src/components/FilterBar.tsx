@@ -33,7 +33,7 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
 
   return (
     // <div className="flex flex-wrap gap-2 mb-8 mt-[30px] relative ml-[270px]">
-    <div className="flex overflow-x-auto gap-2 mb-8 mt-[30px] px-4 sm:px-0 sm:ml-[270px] no-scrollbar">
+    <div className="sm:text-[16px] text-[14px] flex overflow-x-auto gap-2 mb-8 mt-[30px] px-4 sm:px-0 sm:ml-[270px] no-scrollbar">
       <button
         onClick={toggleModal}
         className="border-1 border-borderColor bg-black text-borderColor px-7 py-0.25 rounded-full hover:bg-purple-600 hover:text-white"

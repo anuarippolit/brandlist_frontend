@@ -38,11 +38,11 @@ const ProductCard = ({ product, onClick }: {
 
   return (
     <div 
-  className="bg-neutral-900 p-[5px] sm:p-[10px] rounded-lg shadow-md hover:shadow-lg cursor-pointer font-inter font-normal w-full max-w-[200px] mx-auto"
+  className="bg-neutral-900 p-[5px] sm:p-[10px] rounded-lg shadow-md hover:shadow-lg cursor-pointer font-inter font-normal flex flex-col h-full" // instead of w-full flex flex-col h-full
   onClick={onClick}
 >
 
-      <div className="bg-gray-200 h-[200px] w-[150px] sm:h-[250px] sm:w-[200px] rounded-lg mb-4 relative">
+       <div className="bg-gray-200 aspect-[3/4] w-full rounded-lg mb-4 relative overflow-hidden "> {/*// div className="bg-gray-200 aspect-[3/4] w-full rounded-lg mb-4 relative overflow-hidden // bg-gray-200 h-[175px] w-[133px] sm:h-[250px] sm:w-[180px] rounded-lg mb-4 relative */}
         <img
           src={product.image_url}
           alt={product.name}
@@ -61,7 +61,7 @@ const ProductCard = ({ product, onClick }: {
       </div>
 
       <div>
-        <p className="text-[16px] font-normal text-white">
+        <p className="text-[14px] sm:text-[16px] font-normal text-white">
         {product.sale_price ? product.sale_price.toLocaleString() : "Цена не указана"} ₸{" "}
         {product.first_price && product.first_price !== product.sale_price && (
   <span className="text-[#919191] line-through text-[16px]">
@@ -70,8 +70,8 @@ const ProductCard = ({ product, onClick }: {
 )}
 
         </p>
-        <p className="text-[16px] font-medium mt-2">{product.name}</p>
-        <p className="font-normal text-[14px] mt-2">{product.brand} ({product.shop})</p>
+        <p className="text-[14px] sm:text-[16px] font-medium mt-2">{product.name}</p>
+        <p className="font-normal text-[12px] sm:text-[14px] mt-2">{product.brand} ({product.shop})</p>
       </div>
     </div>
   );

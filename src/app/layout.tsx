@@ -23,7 +23,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body>
         {children}
-        <Analytics /> {/* Add Vercel Analytics component */}
+        <Analytics /> 
       </body>
     </html>
   );
