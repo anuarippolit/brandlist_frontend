@@ -40,21 +40,24 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
       >
         Фильтр
       </button>
-      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
-        Категория
-      </div>
-      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
-        Бренд
-      </div>
-      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
-        Размер
-      </div>
-      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
-        Цена
-      </div>
-      <div className = "border-1 border-borderColor bg-black text-borderColor px-7 rounded-full hover:bg-purple-600 hover:text-white">
-        Пол
-      </div>
+      {[
+  selectedCategory && { label: selectedCategory, key: "category" },
+  selectedBrand && { label: selectedBrand, key: "brand" },
+  selectedSize && { label: selectedSize, key: "size" },
+  selectedColor && { label: selectedColor, key: "color" },
+  (minPrice !== null || maxPrice !== null) && {
+    label: `${minPrice || 0} — ${maxPrice || "∞"}`,
+    key: "price",
+  },
+].filter(Boolean).map((filter, index) => (
+  <div
+    key={index}
+    className="whitespace-nowrap border-1 border-borderColor bg-black text-borderColor px-7 py-0.5 rounded-full hover:bg-purple-600 hover:text-white"
+  >
+    {typeof filter === "object" && filter?.label}
+  </div>
+))}
+
       {isModalOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
