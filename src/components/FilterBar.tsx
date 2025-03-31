@@ -78,6 +78,7 @@ const FilterBar = ({ onApplyFilters }: { onApplyFilters: (filters: any) => void 
             <div className="text-center mb-6 text-2xl font-bold text-white">
               Фильтр
             </div>
+            
 
             <div className="grid gap-6 overflow-y-auto">
               <div>
