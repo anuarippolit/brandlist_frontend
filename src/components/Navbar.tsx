@@ -1,18 +1,18 @@
-import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [favoriteCount, setFavoriteCount] = useState<number>(0);
 
   useEffect(() => {
     const updateFavoriteCount = () => {
-      const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
       setFavoriteCount(favorites.length);
     };
 
     updateFavoriteCount();
-    window.addEventListener("storage", updateFavoriteCount);
-    return () => window.removeEventListener("storage", updateFavoriteCount);
+    window.addEventListener('storage', updateFavoriteCount);
+    return () => window.removeEventListener('storage', updateFavoriteCount);
   }, []);
 
   return (
@@ -20,7 +20,6 @@ const Navbar = () => {
       {/* Brand name */}
       {/* <div className="flex items-center justify-center ml-[-130px] sm:ml-[340px] sm:justify-start w-full sm:w-auto"> */}
       <div className="flex items-center justify-center px-4 ml-[-130px] sm:ml-[340px] sm:mr-[100px] sm:justify-start w-full sm:w-auto">
-
         <Link href="/home" passHref>
           <h1 className="text-[20px] sm:text-[25px] font-poppins font-extrabold leading-[40px] sm:leading-[52px] tracking-tight cursor-pointer">
             <span className="italic font-extrabold">brand</span>

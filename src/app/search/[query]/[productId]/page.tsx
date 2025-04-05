@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Breadcrumb from "@/components/Breadcrumb";
-import Navbar from "@/components/Navbar";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Breadcrumb from '@/components/Breadcrumb';
+import Navbar from '@/components/Navbar';
 
 interface Product {
   id: number;
@@ -19,7 +19,11 @@ interface Product {
   link: string;
 }
 
-const ProductDetail = ({ params }: { params: Promise<{ query: string; productId: string }> }) => {
+const ProductDetail = ({
+  params,
+}: {
+  params: Promise<{ query: string; productId: string }>;
+}) => {
   const [product, setProduct] = useState<Product | null>(null);
   const [query, setQuery] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -32,22 +36,25 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
         const { query, productId } = resolvedParams;
         setQuery(query);
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`
+        );
         if (!response.ok) {
           throw new Error(`HTTP Error! Status: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log("Fetched Product:", data);
+        console.log('Fetched Product:', data);
 
         setProduct(data);
 
         // Проверка, есть ли продукт в избранном
-        const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-        setIsFavorited(favorites.some((fav: { id: number }) => fav.id === data.id));
-
+        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        setIsFavorited(
+          favorites.some((fav: { id: number }) => fav.id === data.id)
+        );
       } catch (error) {
-        console.error("Error fetching product:", error);
+        console.error('Error fetching product:', error);
       } finally {
         setLoading(false);
       }
@@ -59,15 +66,17 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
   const handleFavoriteToggle = () => {
     if (!product) return;
 
-    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
     if (isFavorited) {
-      favorites = favorites.filter((fav: { id: number }) => fav.id !== product.id);
+      favorites = favorites.filter(
+        (fav: { id: number }) => fav.id !== product.id
+      );
     } else {
       favorites.push(product);
     }
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem('favorites', JSON.stringify(favorites));
     setIsFavorited(!isFavorited);
   };
 
@@ -76,22 +85,30 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
   }
 
   if (!product) {
-    return <div className="text-gray-400 text-center mt-6">Продукт не найден.</div>;
+    return (
+      <div className="text-gray-400 text-center mt-6">Продукт не найден.</div>
+    );
   }
 
   return (
     <div className="bg-black text-white min-h-screen">
       <Navbar />
-      <Breadcrumb breadcrumbs={[{ label: "Поиск", href: "/home" }, { label: query || "...", href: `/search/${query}` }, { label: product.name }]} />
+      <Breadcrumb
+        breadcrumbs={[
+          { label: 'Поиск', href: '/home' },
+          { label: query || '...', href: `/search/${query}` },
+          { label: product.name },
+        ]}
+      />
 
       <div className="flex flex-col lg:flex-row gap-6 mt-4 px-4 lg:px-0">
-
-        <div className="w-full h-[470px] sm:h-[620px] sm:w-[480px] bg-gray-300 rounded-lg sm:ml-[200px] relative">
+        <div className="w-auto h-auto sm:h-[620px] sm:w-[480px] bg-gray-300 rounded-lg sm:ml-[200px] relative">
           <img
             src={product.image_url}
             alt={product.name}
             className="object-cover w-full h-full rounded-lg"
           />
+          
 
           {/* Кнопка избранного */}
           <button
@@ -99,7 +116,11 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
             onClick={handleFavoriteToggle}
           >
             <img
-              src={isFavorited ? "/images/filledheart.png" : "/images/blackheart.png"}
+              src={
+                isFavorited
+                  ? '/images/filledheart.png'
+                  : '/images/blackheart.png'
+              }
               alt="Favorite"
               className="w-[20px] h-[18px]"
             />
@@ -108,10 +129,12 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
 
         <div className="w-full sm:w-[550px] bg-[#171717] h-[350px] p-6 rounded-lg font-inter">
           <h2 className="text-[16px] font-normal">{product.brand}</h2>
-          <h3 className="text-[16px] font-bold mt-[15px] mb-[15px]">{product.name}</h3>
+          <h3 className="text-[16px] font-bold mt-[15px] mb-[15px]">
+            {product.name}
+          </h3>
 
           <div className="bg-[#333333] p-4 rounded-lg mt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
-          <div className="flex flex-wrap gap-1.5 mt-[15px]">
+            <div className="flex flex-wrap gap-1.5 mt-[15px]">
               {product?.sizes?.slice(0, 3).map((size, index) => (
                 <span
                   key={index}
@@ -133,11 +156,12 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
               </a>
 
               <div className="flex gap-3 mt-2 sm:ml-0 ml-2">
-              {product.first_price && product.first_price !== product.sale_price && (
-  <p className="text-[#919191] line-through text-[16px]">
-    {product.first_price.toLocaleString()} ₸
-  </p>
-)}
+                {product.first_price &&
+                  product.first_price !== product.sale_price && (
+                    <p className="text-[#919191] line-through text-[16px]">
+                      {product.first_price.toLocaleString()} ₸
+                    </p>
+                  )}
                 <p className="text-white text-[16px]">
                   {product?.sale_price?.toLocaleString()} ₸
                 </p>

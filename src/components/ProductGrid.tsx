@@ -1,4 +1,4 @@
-import ProductCard from "./ProductCard";
+import ProductCard from './ProductCard';
 
 const ProductGrid = ({
   products,
@@ -18,13 +18,15 @@ const ProductGrid = ({
 }) => {
   return (
     <div
-  className="bg-[#171717] p-[10px] rounded-lg grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 w-full max-w-[900px] mx-auto mb-5 px-4"
-  style={{ minHeight: "100px" }}
->
-
-
+      className="bg-[#171717] p-[10px] rounded-lg grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 w-full max-w-[900px] mx-auto mb-5 px-4"
+      style={{ minHeight: '100px' }}
+    >
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} onClick={product.onClick} />
+        <ProductCard
+          key={product.id}
+          product={product}
+          onClick={product.onClick}
+        />
       ))}
     </div>
   );
