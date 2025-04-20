@@ -87,7 +87,7 @@ const SearchSection = () => {
               <span
   key={index}
   onClick={() => handleQueryClick(query)}
-  className="border border-borderColor text-[13px] px-3 py-1 rounded-full text-borderColor cursor-pointer hover:bg-purple-600 transition"
+  className="border border-borderColor text-[13px]  sm:text-[16px] px-3 py-1 rounded-full text-borderColor cursor-pointer hover:bg-purple-600 transition"
 >
   {query}
 </span>
@@ -140,8 +140,8 @@ const Home = () => {
           ))}
         </div> */}
       {/* Mobile: static 2x2 grid с анимацией */}
-<div className="grid sm:hidden grid-cols-2 gap-2 px-2 pt-6 mt-[0px]">
-  {/* Первый ряд — вправо */}
+{/* <div className="grid sm:hidden grid-cols-2 gap-2 px-2 pt-6 mt-[0px]">
+  //Первый ряд — вправо 
   <div className="col-span-2 flex space-x-2 animate-slide-right">
     {[4, 5, 6, 1, 2, 3].map((num) => (
       <img
@@ -153,7 +153,7 @@ const Home = () => {
     ))}
   </div>
 
-  {/* Второй ряд — влево */}
+  //Второй ряд — влево 
   <div className="col-span-2 flex space-x-2 animate-slide-left mt-[30px]">
     {[1, 2, 4, 5, 6, 3].map((num) => (
       <img
@@ -163,8 +163,38 @@ const Home = () => {
         className="w-1/2 h-[320px] rounded-[20px] object-cover"
       />
     ))}
+  </div> 
+</div>*/} 
+<div className="sm:hidden px-2 pt-6">
+  {/* Первый ряд — вправо с начальным смещением */}
+  <div className="overflow-hidden">
+    <div className="flex w-[200%] animate-slide-right-started-left space-x-2">
+      {[4, 5, 6, 1, 2, 3].map((num) => (
+        <img
+          key={num}
+          src={`/images/image${num}.png`}
+          alt={`Image ${num}`}
+          className="w-[50%] h-[320px] rounded-[20px] object-cover"
+        />
+      ))}
+    </div>
+  </div>
+
+  {/* Второй ряд — влево (оставим как было или тоже подправим под нужную логику) */}
+  <div className="overflow-hidden mt-[30px]">
+    <div className="flex w-[200%] animate-slide-left space-x-2">
+      {[1, 2, 4, 5, 6, 3].map((num) => (
+        <img
+          key={num}
+          src={`/images/image${num}.png`}
+          alt={`Image ${num}`}
+          className="w-[50%] h-[320px] rounded-[20px] object-cover"
+        />
+      ))}
+    </div>
   </div>
 </div>
+
         <SearchSection />
       </div>
     </>

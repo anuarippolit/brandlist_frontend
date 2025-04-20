@@ -2,8 +2,10 @@ import { useState } from 'react';
 
 const FilterBar = ({
   onApplyFilters,
+  query,
 }: {
-  onApplyFilters: (filters: any) => void;
+  onApplyFilters: (filters: any, page?: number) => void;
+  query:string|null;
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSize, setSelectedSize] = useState<string[]>([]);
@@ -31,9 +33,11 @@ const FilterBar = ({
     if (selectedColor.length) filters.color = selectedColor;
     if (minPrice !== null) filters.price_min = String(minPrice);
     if (maxPrice !== null) filters.price_max = String(maxPrice);
+    if (query) filters.name = query;
+
 
     console.log('Applying Filters:', filters);
-    onApplyFilters(filters);
+    onApplyFilters(filters, 1);
     setIsModalOpen(false);
   };
 
