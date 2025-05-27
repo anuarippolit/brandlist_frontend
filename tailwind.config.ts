@@ -18,6 +18,7 @@ export default {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        bangers: ['"Bangers"', 'cursive'],
       },
       colors: {
         customPurple: '#6F00FF',
@@ -44,7 +45,6 @@ export default {
           '100%': { transform: 'translateX(-100%)' },
         },
       },
-      
     },
   },
   plugins: [],

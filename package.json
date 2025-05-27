@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
+    "framer-motion": "^12.12.1",
     "next": "15.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-typewriter-effect": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

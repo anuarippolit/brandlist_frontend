@@ -21,9 +21,9 @@ const Navbar = () => {
       {/* <div className="flex items-center justify-center ml-[-130px] sm:ml-[340px] sm:justify-start w-full sm:w-auto"> */}
       <div className="flex items-center justify-center px-4 ml-[-130px] sm:ml-[340px] sm:mr-[100px] sm:justify-start w-full sm:w-auto">
         <Link href="/home" passHref>
-          <h1 className="text-[20px] sm:text-[25px] font-poppins font-extrabold leading-[40px] sm:leading-[52px] tracking-tight cursor-pointer">
-            <span className="italic font-extrabold">brand</span>
-            <span className="text-[#6F00FF] italic font-extrabold">list</span>
+          <h1 className="text-[24px] sm:text-[30px] leading-[40px] sm:leading-[52px] tracking-tight cursor-pointer">
+            <span className="font-bangers text-white">brand</span>
+            <span className="font-bangers text-[#6F00FF]">list</span>
           </h1>
         </Link>
       </div>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -31,9 +32,141 @@ body {
 .font-inter {
   font-family: 'Inter', sans-serif;
 }
+
+.font-bangers {
+  font-family: 'Bangers', cursive;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+/* SECOND LINE (with caret, starts immediately) */
+.reverse-typewriter-second {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid #6f00ff;
+  animation: reverse-typing 2.8s steps(40, end) 2s forwards,
+    hide-caret 0s ease 4.8s forwards;
+}
+
+/* FIRST LINE (delays deletion, starts hidden, shows caret only later) */
+.reverse-typewriter-first {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid transparent;
+  animation: reverse-typing 3s steps(50, end) 5s forwards,
+    blink-caret 0.75s step-end infinite 5s;
+}
+
+/* Typing animation */
+@keyframes reverse-typing {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Caret blink */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #6f00ff;
+  }
+}
+
+@keyframes hide-caret {
+  to {
+    border-right-color: transparent;
+  }
+}
+
+.typewriter-line1,
+.typewriter-line2,
+.typewriter-line3 {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  visibility: hidden; /* 👈 hidden by default */
+}
+
+/* Line 1 starts immediately */
+.typewriter-line1 {
+  visibility: visible;
+  animation: typing 2.4s steps(33, end) forwards;
+}
+
+/* Line 2 starts after delay */
+.typewriter-line2 {
+  animation: typing-delayed-2 2.4s steps(55, end) forwards;
+  animation-delay: 2.4s;
+}
+
+/* Line 3 — with caret — after delay */
+.typewriter-line3 {
+  animation: typing-delayed-3 2.4s steps(38, end) forwards,
+    blink-caret 0.75s step-end infinite 4.8s;
+  animation-delay: 4.8s;
+  border-right: 0.15em solid #6f00ff;
+}
+
+/* Typing Keyframes */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes typing-delayed-2 {
+  0% {
+    width: 0;
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
+@keyframes typing-delayed-3 {
+  0% {
+    width: 0;
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 4s linear infinite;
 }

@@ -48,7 +48,7 @@ const ProductCard = ({
       className="bg-neutral-900 p-[5px] sm:p-[10px] rounded-lg shadow-md hover:shadow-lg cursor-pointer font-inter font-normal flex flex-col h-full" // instead of w-full flex flex-col h-full
       onClick={onClick}
     >
-      <div className="bg-gray-200 aspect-[3/4] w-full rounded-lg mb-4 relative overflow-hidden ">
+      <div className="bg-gray-200 aspect-[4/5] w-full rounded-lg mb-4 relative overflow-hidden ">
         {' '}
         {/*// div className="bg-gray-200 aspect-[3/4] w-full rounded-lg mb-4 relative overflow-hidden // bg-gray-200 h-[175px] w-[133px] sm:h-[250px] sm:w-[180px] rounded-lg mb-4 relative */}
         <img
