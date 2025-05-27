@@ -27,7 +27,7 @@
 Clone the repository:
 
 ```bash
-git clone https://github.com/dianakuanyshkyzy/brandlist.git
+git clone https://github.com/anuarippolit/brandlist_frontend
 cd brandlist
 npm install
 npm run dev
