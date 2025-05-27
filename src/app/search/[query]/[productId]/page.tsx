@@ -356,7 +356,7 @@
 
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Breadcrumb from '@/components/Breadcrumb';
 import Navbar from '@/components/Navbar';
@@ -376,14 +376,14 @@ interface Product {
 }
 
 interface Props {
-  params: {
+  params: Promise<{
     query: string;
     productId: string;
-  };
+  }>;
 }
 
 export default function ProductDetail({ params }: Props) {
-  const { query, productId } = params;
+  const { query, productId } = use(params);
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [isFavorited, setIsFavorited] = useState<boolean>(false);
