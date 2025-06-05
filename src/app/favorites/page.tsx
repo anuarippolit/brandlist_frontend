@@ -45,17 +45,21 @@ const FavoritesPage = () => {
         <p className="text-gray-400 text-xl">Нет избранных товаров.</p>
       </div>       */}
       <main className="px-8">
-        <h1 className="text-[35px] font-normal mb-6 ml-4 sm:ml-[340px] mt-[10px]">
+        <h1 className="text-[35px] font-normal mb-6 ml-4 sm:ml-[340px] mt-[10px] text-white">
           Избранное
         </h1>
         {favorites.length > 0 ? (
           <ProductGrid
             products={favorites.map((product) => ({
-              ...product,
-              name:
-                product.name.length > 17
-                  ? product.name.slice(0, 17) + '...'
-                  : product.name,
+              id: product.id,
+              name: product.name,
+              brand: product.brand,
+              shop: product.shop,
+              sale_price: product.sale_price,
+              first_price: product.first_price,
+              category: product.category,
+              link: product.link,
+              images: product.images || [], // fallback for card
               onClick: () => handleProductClick(product),
             }))}
           />

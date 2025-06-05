@@ -11,7 +11,7 @@ const ProductCard = ({
     first_price?: number;
     brand: string;
     shop: string;
-    image_url: string;
+    images: string[];
     link: string;
     category: string[];
   };
@@ -48,11 +48,28 @@ const ProductCard = ({
       className="bg-neutral-900 p-[5px] sm:p-[10px] rounded-lg shadow-md hover:shadow-lg cursor-pointer font-inter font-normal flex flex-col h-full" // instead of w-full flex flex-col h-full
       onClick={onClick}
     >
-      <div className="bg-gray-200 aspect-[4/5] w-full rounded-lg mb-4 relative overflow-hidden ">
-        {' '}
-        {/*// div className="bg-gray-200 aspect-[3/4] w-full rounded-lg mb-4 relative overflow-hidden // bg-gray-200 h-[175px] w-[133px] sm:h-[250px] sm:w-[180px] rounded-lg mb-4 relative */}
+      {/* <div className="bg-gray-200 aspect-[4/5] w-full rounded-lg mb-4 relative overflow-hidden ">
         <img
           src={product.image_url}
+          alt={product.name}
+          className="h-full w-full object-cover rounded-lg"
+        />
+        <button
+          className="absolute top-2 right-2 text-white"
+          onClick={handleFavoriteToggle}
+        >
+          <img
+            src={
+              isFavorited ? '/images/filledheart.png' : '/images/blackheart.png'
+            }
+            alt="Favorite"
+            className="w-[20px] h-[18px]"
+          />
+        </button>
+      </div> */}
+      <div className="bg-gray-200 aspect-[3/4] w-full rounded-lg mb-4 relative overflow-hidden">
+        <img
+          src={product.images?.[0] || '/images/no-image.png'} // fallback if empty
           alt={product.name}
           className="h-full w-full object-cover rounded-lg"
         />
@@ -83,10 +100,10 @@ const ProductCard = ({
               </span>
             )}
         </p>
-        <p className="text-[14px] sm:text-[16px] font-medium mt-2">
+        <p className="text-[14px] sm:text-[16px] font-medium mt-2 text-white">
           {product.name}
         </p>
-        <p className="font-normal text-[12px] sm:text-[14px] mt-2">
+        <p className="font-normal text-[12px] sm:text-[14px] mt-2 text-white">
           {product.brand} ({product.shop})
         </p>
       </div>

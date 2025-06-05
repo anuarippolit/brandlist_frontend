@@ -10,7 +10,7 @@ const ProductGrid = ({
     first_price?: number;
     brand: string;
     shop: string;
-    image_url: string;
+    images: string[];
     link: string;
     category: string[];
     onClick?: () => void;
@@ -18,7 +18,7 @@ const ProductGrid = ({
 }) => {
   return (
     <div
-      className="bg-[#171717] p-[10px] rounded-lg grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 w-full max-w-[950px] mx-auto mb-0 px-8 pt-8"
+      className="bg-[#171717] p-[32px] rounded-lg grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 w-full max-w-[950px] mx-auto mb-0 px-8 pt-8"
       style={{ minHeight: '100px' }}
     >
       {products.map((product) => (
