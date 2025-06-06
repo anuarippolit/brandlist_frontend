@@ -87,7 +87,7 @@ const SearchSection = () => {
           <div className="scroll-hide flex w-full space-x-3 mt-2 px-1">
             {[
               'Хочу Adidas Samba 42 размера до 100000',
-              'Кеды 43 размера adidas',
+              'Кеды 43 размера adidas, белые',
               'Брюки, но не спортивные',
               'Calvin Klein джинсы',
               'Худи, желательно до 130000',
