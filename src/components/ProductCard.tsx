@@ -104,7 +104,7 @@ const ProductCard = ({
           {product.name}
         </p>
         <p className="font-normal text-[12px] sm:text-[14px] mt-2 text-white">
-          {product.brand} ({product.shop})
+          {product.brand}
         </p>
       </div>
     </div>

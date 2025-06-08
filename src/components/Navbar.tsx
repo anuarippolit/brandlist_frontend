@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className="flex justify-between items-center w-full h-16 px-4 sm:px-8 bg-black text-white">
       {/* Brand name */}
       {/* <div className="flex items-center justify-center ml-[-130px] sm:ml-[340px] sm:justify-start w-full sm:w-auto"> */}
-      <div className="flex items-center justify-center px-4 ml-[-130px] sm:ml-[340px] sm:mr-[100px] sm:justify-start w-full sm:w-auto">
+      <div className="flex items-center justify-start ml-2 sm:ml-[340px] sm:mr-[100px] w-auto">
         <Link href="/home" passHref>
           <h1 className="text-[24px] sm:text-[30px] leading-[40px] sm:leading-[52px] tracking-tight cursor-pointer">
             <span className="font-bangers text-white">brand</span>
@@ -29,7 +29,7 @@ const Navbar = () => {
       </div>
 
       {/* Favorites */}
-      <div className="flex items-center gap-4 sm:mr-[340px] relative w-auto">
+      <div className="flex items-center gap-4 mr-4 sm:mr-[340px] relative w-auto">
         <Link href="/favorites" passHref>
           <div className="relative">
             <img

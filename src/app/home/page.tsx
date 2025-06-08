@@ -25,11 +25,12 @@ const SearchSection = () => {
     //   style={{ top: "20px" }}
     // >
 
-    <div
-      className="absolute z-10 bg-darkgrayColor bg-opacity-95 text-white text-center rounded-[20px] sm:rounded-[30px] w-[94vw] sm:w-[760px] h-[83vh] sm:h-[580px] mx-auto left-1/2 transform -translate-x-1/2 overflow-hidden px-4 sm:px-10 mt-[20px]"
-      style={{ top: '5vh' }}
-    >
-      <div className="p-10 sm:mt-[8%] mt-[90px]">
+    // <div
+    //   className="absolute z-10 bg-darkgrayColor bg-opacity-95 text-white text-center rounded-[20px] sm:rounded-[30px] w-[94vw] sm:w-[760px] h-[83vh] sm:h-[580px] mx-auto left-1/2 transform -translate-x-1/2 overflow-hidden px-4 sm:px-10 mt-[20px]"
+    //   style={{ top: '5vh' }}
+    // >
+    <div className="absolute z-10 bg-darkgrayColor bg-opacity-95 text-white text-center rounded-[20px] sm:rounded-[30px] w-[94vw] sm:w-[760px] h-[auto] sm:h-[580px] mx-auto left-1/2 transform -translate-x-1/2 overflow-hidden px-4 sm:px-10 top-[45%] -translate-y-1/2 sm:top-[calc(5vh+20px)] sm:translate-y-0">
+      <div className="p-10 sm:mt-[8%] mt-[30px] mb-[30px]">
         {/* <h1 className="text-[32px] font-poppins font-normal leading-[42px] tracking-tight"> */}
         {/* <h1 className="text-[20px] sm:text-[32px] leading-[28px] sm:leading-[42px] font-poppins font-normal tracking-tight">
           <span className="font-extrabold italic">brand</span>
@@ -61,7 +62,7 @@ const SearchSection = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Напишите свой запрос"
-            className="w-full px-5 py-2 text-[14px] sm:text-lg rounded-full bg-inputColor text-white focus:outline-none placeholder-borderColor"
+            className="w-full pl-5 pr-14 py-2 text-[14px] sm:text-lg rounded-full bg-inputColor text-white focus:outline-none placeholder-borderColor"
             onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
           />
           <button
@@ -174,7 +175,7 @@ const Home = () => {
     ))}
   </div>
 </div>*/}
-        <div className="sm:hidden px-2 pt-6">
+        <div className="sm:hidden px-2 flex flex-col justify-center h-screen -mt-[40px]">
           {/* Первый ряд — вправо с начальным смещением */}
           <div className="overflow-hidden">
             <div className="flex w-[200%] animate-slide-right-started-left space-x-2">

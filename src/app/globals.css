@@ -75,3 +75,42 @@ body {
 .scroll-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+
+@keyframes slide-right-started-left {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-slide-right-started-left {
+  animation: slide-right-started-left 10s linear infinite;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide-left {
+  animation: slide-left 10s linear infinite;
+}
+
+@keyframes gallery {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-gallery {
+  animation: gallery 30s linear infinite;
+}
