@@ -175,7 +175,7 @@ export default function ProductDetail({ params }: Props) {
               rel="noopener noreferrer"
               className="bg-customPurple px-8 py-3 rounded-3xl text-white font-[500] hover:bg-purple-500 text-[16px] text-center inline-block mt-[20px]"
             >
-              В магазин {product.shop}
+              В магазине {product.shop}
             </a>
 
             {/* 4. Sizes */}

@@ -119,7 +119,15 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
         </div>
 
         <div className="flex flex-col items-center gap-4 mt-6 mb-6">
-          <ProductGrid products={products} />
+          {products.length > 0 && <ProductGrid products={products} />}
+
+          {!isLoading && products.length === 0 && (
+            <div className="text-center font-[500] font-inter text-white text-[16px] sm:text-[20px] px-8 mt-20">
+              <p>Прости но я ничего не нашел 🥲,</p>
+              <p>попробуй написать по проще пожалуйста</p>
+            </div>
+          )}
+
           {isLoading && (
             <div className="w-[240px] h-[32px] overflow-hidden relative mt-20">
               <div className="animate-marquee whitespace-nowrap absolute top-0 left-0">

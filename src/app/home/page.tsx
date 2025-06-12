@@ -29,7 +29,7 @@ const SearchSection = () => {
     //   className="absolute z-10 bg-darkgrayColor bg-opacity-95 text-white text-center rounded-[20px] sm:rounded-[30px] w-[94vw] sm:w-[760px] h-[83vh] sm:h-[580px] mx-auto left-1/2 transform -translate-x-1/2 overflow-hidden px-4 sm:px-10 mt-[20px]"
     //   style={{ top: '5vh' }}
     // >
-    <div className="absolute z-10 bg-darkgrayColor bg-opacity-95 text-white text-center rounded-[20px] sm:rounded-[30px] w-[94vw] sm:w-[760px] h-[auto] sm:h-[580px] mx-auto left-1/2 transform -translate-x-1/2 overflow-hidden px-4 sm:px-10 top-[45%] -translate-y-1/2 sm:top-[calc(5vh+20px)] sm:translate-y-0">
+    <div className="absolute z-10 bg-darkgrayColor bg-opacity-80 text-white text-center rounded-[20px] sm:rounded-[30px] w-[94vw] sm:w-[760px] h-[auto] sm:h-[580px] mx-auto left-1/2 transform -translate-x-1/2 overflow-hidden px-4 sm:px-10 top-[45%] -translate-y-1/2 sm:top-[calc(5vh+20px)] sm:translate-y-0">
       <div className="p-10 sm:mt-[8%] mt-[30px] mb-[30px]">
         {/* <h1 className="text-[32px] font-poppins font-normal leading-[42px] tracking-tight"> */}
         {/* <h1 className="text-[20px] sm:text-[32px] leading-[28px] sm:leading-[42px] font-poppins font-normal tracking-tight">
@@ -81,7 +81,7 @@ const SearchSection = () => {
 
         {/* Popular Queries */}
         <div className="mt-8 text-gray-300 max-w-[550px] mx-auto">
-          <p className="w-full text-left text-sm sm:text-[16px] text-borderColor mb-4 ml-[5px]">
+          <p className="w-full text-left text-sm sm:text-[16px] text-borderColor mb-6 ml-[5px]">
             Примеры запросов:
           </p>
 
@@ -95,8 +95,8 @@ const SearchSection = () => {
             ].map((s, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 bg-inputColor text-borderColor text-left text-[15px] font-[500] px-7 py-3 rounded-full cursor-pointer max-w-[230px] break-words leading-snug"
                 onClick={() => handleQueryClick(s)}
+                className="flex-shrink-0 bg-inputColor text-borderColor text-left text-[13px] sm:text-[15px] font-[500] px-4 sm:px-7 py-2 sm:py-3 rounded-full cursor-pointer max-w-[200px] sm:max-w-[230px] break-words leading-snug"
               >
                 {s}
               </div>
@@ -110,17 +110,22 @@ const SearchSection = () => {
 
 const Home = () => {
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-
+    const isMobile = window.innerWidth < 640; // sm breakpoint
+    if (!isMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, []);
+
   return (
     <>
       <Navbar />
       {/* <div className="relative w-full h-screen overflow-hidden bg-black"> */}
-      <div className="relative w-full h-screen overflow-hidden bg-black max-w-screen max-h-screen">
+      <div className="relative w-full h-screen overflow-hidden bg-black max-w-screen max-h-screen sm:pb-0 pb-[50px]">
         {/* Desktop: animated horizontal gallery */}
         <div className="hidden sm:flex absolute left-0 top-[75px] items-center space-x-[20px] animate-gallery w-[calc(450px*6*2)]">
           {/* <div className="hidden sm:flex absolute top-1/2 left-0 -translate-y-1/2 items-center space-x-[20px] animate-gallery w-[calc(450px*6*2)]"> */}
