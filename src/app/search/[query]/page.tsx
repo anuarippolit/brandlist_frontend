@@ -18,6 +18,9 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
   const [isLoading, setIsLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
   const [icon, setIcon] = useState('/images/arrow.png');
+  const [sortOrder, setSortOrder] = useState<
+    'relevance' | 'price_asc' | 'price_desc'
+  >('relevance');
 
   useEffect(() => {
     const init = async () => {
@@ -41,8 +44,9 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
           process.env.NEXT_PUBLIC_API_URL
         }/chat/send?message=${encodeURIComponent(
           query
-        )}&offset=${offset}&limit=${LIMIT}`
+        )}&offset=${offset}&limit=${LIMIT}&sort=${sortOrder}`
       );
+
       if (!response.ok) throw new Error(`Failed: ${response.status}`);
       const data = await response.json();
       const newProducts = data.products || [];
@@ -61,7 +65,7 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
     } finally {
       setIsLoading(false);
     }
-  }, [query, offset, isLoading, hasMore, router]);
+  }, [query, offset, isLoading, hasMore, router, sortOrder]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -116,6 +120,87 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
               className="w-[12px] h-[12px] sm:w-[12px] sm:h-[12px]"
             />
           </button>
+        </div>
+
+        {/* <div className="mt-4 max-w-[950px] mx-auto flex justify-start space-x-3 pl-1">
+          {[
+            { label: 'Сначала дешевле', value: 'price_asc' },
+            { label: 'Сначала дороже', value: 'price_desc' },
+          ].map(({ label, value }) => (
+            <button
+              key={value}
+              onClick={() => {
+                setProducts([]);
+                setOffset(0);
+                setHasMore(true);
+                setSortOrder(value as any);
+              }}
+              className={`px-4 py-2 text-[16px] rounded-full border-2 ${
+                sortOrder === value
+                  ? 'bg-[#6F00FF] text-white border-[#6F00FF]'
+                  : 'bg-inputColor text-white border-inputColor'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div> */}
+
+        {/* Sorting Buttons */}
+        <div className="mt-4 max-w-[950px] mx-auto w-full pl-1">
+          {/* Desktop: two buttons */}
+          <div className="hidden sm:flex space-x-3">
+            {[
+              { label: 'Сначала дешевле', value: 'price_asc' },
+              { label: 'Сначала дороже', value: 'price_desc' },
+            ].map(({ label, value }) => (
+              <button
+                key={value}
+                onClick={() => {
+                  setProducts([]);
+                  setOffset(0);
+                  setHasMore(true);
+                  setSortOrder(value as any);
+                }}
+                className={`px-4 py-2 text-[16px] rounded-full border-2 ${
+                  sortOrder === value
+                    ? 'bg-[#6F00FF] text-white border-[#6F00FF]'
+                    : 'bg-inputColor text-white border-inputColor'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile: toggle button */}
+          <div className="flex sm:hidden">
+            <button
+              onClick={() => {
+                const nextSort =
+                  sortOrder === 'relevance'
+                    ? 'price_asc'
+                    : sortOrder === 'price_asc'
+                    ? 'price_desc'
+                    : 'relevance';
+                setProducts([]);
+                setOffset(0);
+                setHasMore(true);
+                setSortOrder(nextSort);
+              }}
+              className={`px-4 py-2 text-[16px] rounded-full border-2 w-1/2 ${
+                sortOrder === 'price_asc' || sortOrder === 'price_desc'
+                  ? 'bg-[#6F00FF] text-white border-[#6F00FF]'
+                  : 'bg-inputColor text-white border-inputColor'
+              }`}
+            >
+              {sortOrder === 'price_asc'
+                ? 'Дешевле'
+                : sortOrder === 'price_desc'
+                ? 'Дороже'
+                : 'Сортировка'}
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col items-center gap-4 mt-6 mb-6">
